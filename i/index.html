@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>단둘에 초대받았어요</title>
+<meta name="description" content="딱 두 사람이 함께 쓰는 일정·메모·가계부">
+<meta property="og:type" content="website">
+<meta property="og:title" content="단둘에 초대받았어요">
+<meta property="og:description" content="딱 두 사람이 함께 쓰는 일정·메모·가계부">
+<meta property="og:image" content="https://devwelchis-cpu.github.io/i/og.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="theme-color" content="#FBF6EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FBF6EC;--card:#FFFDF8;--ink:#3B3428;--sub:#6B6150;--line:#DCCFB4;--rule:#EADFC9;--btn:#C9DDB5;--btn-line:#7FA35B;--btn-ink:#2F4424;--deep:#4E6B3A}
+@media (prefers-color-scheme:dark){:root{--paper:#1F1C17;--card:#2A261F;--ink:#EDE6D6;--sub:#B5AC9A;--line:#4A4336;--rule:#2C2821;--btn:#3E5530;--btn-line:#7FA35B;--btn-ink:#E6F0DA;--deep:#A9C98C}}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--paper);background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 35px,var(--rule) 35px,var(--rule) 36px);color:var(--ink);font-family:"Gowun Dodum",-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.6}
+main{max-width:420px;margin:0 auto;padding:56px 16px 48px;text-align:center}
+h1{font-family:"Gowun Batang",serif;font-size:28px;line-height:1.35;margin:14px 0 10px}
+.sub{color:var(--sub);font-size:15px;margin:0}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;margin-top:28px;border-radius:22px;background:var(--btn);border:1.5px solid var(--btn-line);color:var(--btn-ink);font:inherit;font-size:17px;text-decoration:none;cursor:pointer}
+.alt{margin-top:14px;font-size:14px;color:var(--sub)}
+a{color:var(--deep)}
+.card{margin-top:34px;padding:16px;background:var(--card);border:1px dashed var(--line);border-radius:10px;text-align:left}
+.card small{display:block;color:var(--sub);font-size:13px}
+.row{display:flex;align-items:center;gap:10px;margin-top:8px}
+.code{font-size:22px;font-weight:700;letter-spacing:4px;flex:1}
+.copy{min-height:44px;padding:0 16px;border-radius:22px;background:none;border:1.5px solid var(--btn-line);color:var(--btn-ink);font:inherit;font-size:14px;cursor:pointer}
+@media (prefers-color-scheme:dark){.copy{color:var(--ink)}}
+.hint{margin-top:6px;font-size:12px;color:var(--sub)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+<svg width="96" height="78" viewBox="0 0 86 70" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="#F6E3A8" stroke="#3B3428" stroke-width="3"/><circle cx="54" cy="40" r="24" fill="#DCE8CC" fill-opacity="0.85" stroke="#3B3428" stroke-width="3"/></svg>
+<h1>단둘에<br>초대받았어요</h1>
+<p class="sub" id="lead">앱을 받고 로그인하면<br>보낸 사람과 바로 연결돼요</p>
+
+<a class="btn" id="get" href="https://play.google.com/store/apps/details?id=com.dandul.dandul">앱 받고 참여하기</a>
+<p class="alt" id="open-line">이미 설치했다면 <a id="open" href="#">앱에서 열기</a></p>
+<p class="alt" id="ios" hidden>iPhone 앱은 준비 중이에요.<br>Android 휴대폰에서 이 링크를 열어 주세요.</p>
+
+<div class="card" id="code-card" hidden>
+<small>자동으로 안 될 때</small>
+<div class="row"><span>초대코드</span><span class="code" id="code"></span><button class="copy" id="copy" type="button">복사</button></div>
+<div class="hint">앱의 "초대코드로 참여"에 적어 주세요</div>
+</div>
+</main>
+<script>
+(function () {
+  var pkg = 'com.dandul.dandul';
+  var m = /[?&]c=([0-9A-Za-z]{6})(?:&|$)/.exec(location.search);
+  var code = m ? m[1].toUpperCase() : null;
+  var ua = navigator.userAgent || '';
+  var android = /Android/i.test(ua);
+  var ios = /iPhone|iPad|iPod/i.test(ua);
+
+  // Play 스토어: 초대코드를 설치 정보(referrer)에 실어 보낸다 → 앱이 설치 후 처음 한 번 읽는다
+  var store = 'https://play.google.com/store/apps/details?id=' + pkg +
+    (code ? '&referrer=' + encodeURIComponent('invite=' + code) : '');
+  // 앱이 있으면 앱을, 없으면 위 Play 주소를 연다 (같은 초대 주소를 앱에 넘김)
+  var intent = 'intent://devwelchis-cpu.github.io/i/' + (code ? '?c=' + code : '') +
+    '#Intent;scheme=https;package=' + pkg +
+    ';S.browser_fallback_url=' + encodeURIComponent(store) + ';end';
+
+  var get = document.getElementById('get');
+  var open = document.getElementById('open');
+  get.href = android ? intent : store;
+  open.href = android ? intent : store;
+
+  if (code) {
+    document.getElementById('code').textContent = code;
+    document.getElementById('code-card').hidden = false;
+    document.getElementById('copy').addEventListener('click', function () {
+      var btn = this;
+      function done() { btn.textContent = '복사했어요'; }
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(code).then(done, done);
+      } else {
+        var t = document.createElement('textarea');
+        t.value = code; document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(t); done();
+      }
+    });
+  }
+
+  if (ios) {
+    get.hidden = true;
+    document.getElementById('open-line').hidden = true;
+    document.getElementById('ios').hidden = false;
+    document.getElementById('lead').innerHTML = '아래 초대코드를 앱에 적으면<br>보낸 사람과 연결돼요';
+  } else if (android && code) {
+    // 메신저 안 브라우저처럼 앱 링크가 바로 안 열린 경우: 열리자마자 한 번 시도
+    location.href = intent;
+  }
+})();
+</script>
+</body>
+</html>
