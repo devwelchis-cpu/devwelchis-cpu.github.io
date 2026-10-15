@@ -1,0 +1,14 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.dandul.dandul",
+      "sha256_cert_fingerprints": [
+        "EF:B4:00:92:49:25:B6:0E:56:3D:B7:F7:12:95:19:6C:CC:94:9A:6F:CA:32:E6:00:0C:8D:5F:99:94:E7:45:A9",
+        "19:4C:B5:B5:5F:A2:66:AD:39:6A:C1:5E:5B:CB:EE:CF:C6:A3:0A:2E:C7:5A:F7:E6:A8:67:68:0D:04:BB:1A:89",
+        "32:CF:5C:80:12:AA:9C:DB:DB:AD:9F:08:87:81:DB:1D:1E:12:4E:0F:FE:6F:80:39:D5:E7:1D:65:50:B8:F2:E5"
+      ]
+    }
+  }
+]
