@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>단둘에 초대받았어요</title>
+<title>라피아에 초대받았어요</title>
 <meta name="description" content="딱 두 사람이 함께 쓰는 일정·메모·가계부">
 <meta property="og:type" content="website">
-<meta property="og:title" content="단둘에 초대받았어요">
+<meta property="og:title" content="라피아에 초대받았어요">
 <meta property="og:description" content="딱 두 사람이 함께 쓰는 일정·메모·가계부">
 <meta property="og:image" content="https://devwelchis-cpu.github.io/i/og.png">
 <meta property="og:image:width" content="1024">
@@ -18,7 +18,7 @@
 :root{--paper:#FBF6EC;--card:#FFFDF8;--ink:#3B3428;--sub:#6B6150;--line:#DCCFB4;--rule:#EADFC9;--btn:#C9DDB5;--btn-line:#7FA35B;--btn-ink:#2F4424;--deep:#4E6B3A}
 @media (prefers-color-scheme:dark){:root{--paper:#1F1C17;--card:#2A261F;--ink:#EDE6D6;--sub:#B5AC9A;--line:#4A4336;--rule:#2C2821;--btn:#3E5530;--btn-line:#7FA35B;--btn-ink:#E6F0DA;--deep:#A9C98C}}
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:var(--paper);background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 35px,var(--rule) 35px,var(--rule) 36px);color:var(--ink);font-family:"Gowun Dodum",-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.6}
+body{margin:0;min-height:100vh;background:var(--paper);background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 35px,var(--rule) 35px,var(--rule) 36px);color:var(--ink);word-break:keep-all;font-family:"Gowun Dodum",-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.6}
 main{max-width:420px;margin:0 auto;padding:56px 16px 48px;text-align:center}
 h1{font-family:"Gowun Batang",serif;font-size:28px;line-height:1.35;margin:14px 0 10px}
 .sub{color:var(--sub);font-size:15px;margin:0}
@@ -32,30 +32,59 @@ a{color:var(--deep)}
 .copy{min-height:44px;padding:0 16px;border-radius:22px;background:none;border:1.5px solid var(--btn-line);color:var(--btn-ink);font:inherit;font-size:14px;cursor:pointer}
 @media (prefers-color-scheme:dark){.copy{color:var(--ink)}}
 .hint{margin-top:6px;font-size:12px;color:var(--sub)}
+/* 비공개 테스트 동안: 앱을 받기 전 두 단계 */
+.steps{margin-top:28px;padding:16px;background:var(--card);border:1px solid var(--line);border-radius:10px;text-align:left}
+.steps>small{display:block;color:var(--sub);font-size:13px}
+.steps ol{list-style:none;margin:4px 0 0;padding:0}
+.steps li{display:flex;gap:12px;padding:12px 0;border-top:1px dashed var(--line)}
+.steps li:first-child{border-top:0}
+.num{flex:none;width:26px;height:26px;margin-top:1px;border-radius:50%;background:var(--btn);border:1.5px solid var(--btn-line);color:var(--btn-ink);display:flex;align-items:center;justify-content:center;font-size:14px}
+.steps b{display:block;font-size:16px;font-weight:700}
+.steps li small{display:block;color:var(--sub);font-size:13px;margin-top:2px}
+.step{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;padding:0 16px;border-radius:22px;border:1.5px solid var(--btn-line);color:var(--btn-ink);text-decoration:none;font-size:14px}
+@media (prefers-color-scheme:dark){.step{color:var(--ink)}}
 [hidden]{display:none!important}
 </style>
 </head>
 <body>
 <main>
-<svg width="96" height="78" viewBox="0 0 86 70" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="#F6E3A8" stroke="#3B3428" stroke-width="3"/><circle cx="54" cy="40" r="24" fill="#DCE8CC" fill-opacity="0.85" stroke="#3B3428" stroke-width="3"/></svg>
-<h1>단둘에<br>초대받았어요</h1>
+<svg width="96" height="72" viewBox="14.09 22.94 71.82 54.12" aria-hidden="true"><defs><clipPath id="mark-a"><circle cx="36.09" cy="44.94" r="22"/></clipPath></defs><circle cx="36.09" cy="44.94" r="22" fill="#F6E3A8"/><circle cx="63.91" cy="55.06" r="22" fill="#DCE8CC"/><circle cx="63.91" cy="55.06" r="22" fill="#BFD49A" clip-path="url(#mark-a)"/></svg>
+<h1>라피아에<br>초대받았어요</h1>
 <p class="sub" id="lead">앱을 받고 로그인하면<br>보낸 사람과 바로 연결돼요</p>
+
+<div class="steps" id="steps" hidden>
+<small>지금은 테스트 기간이라, 앱을 받기 전에 두 단계가 더 있어요</small>
+<ol>
+<li><span class="num">1</span><div><b>테스터 그룹 가입</b><small>휴대폰 Play 스토어와 같은 Google 계정으로 가입해 주세요.</small><a class="step" href="https://groups.google.com/g/lapia-testers" target="_blank" rel="noopener">그룹 가입하기</a></div></li>
+<li><span class="num">2</span><div><b>테스트 참여</b><small>같은 계정으로 '테스터 되기'를 눌러 주세요.</small><a class="step" href="https://play.google.com/apps/testing/com.dandul.dandul" target="_blank" rel="noopener">테스트 참여하기</a></div></li>
+<li><span class="num">3</span><div><b>앱 받고 참여</b><small>이 페이지로 돌아와 아래 버튼으로 받으면, 설치 뒤 바로 연결돼요.</small></div></li>
+</ol>
+</div>
 
 <a class="btn" id="get" href="https://play.google.com/store/apps/details?id=com.dandul.dandul">앱 받고 참여하기</a>
 <p class="alt" id="open-line">이미 설치했다면 <a id="open" href="#">앱에서 열기</a></p>
-<p class="alt" id="ios" hidden>iPhone 앱은 준비 중이에요.<br>Android 휴대폰에서 이 링크를 열어 주세요.</p>
+<div id="ios" hidden>
+<p class="alt">Android 휴대폰이 있다면<br>그 휴대폰에서 이 링크를 열어 주세요.</p>
+<p class="alt">아이폰 앱 소식은 <a href="https://www.threads.com/@lapia_dev" target="_blank" rel="noopener">스레드 @lapia_dev</a>에서 알려 드려요.</p>
+</div>
 
 <div class="card" id="code-card" hidden>
-<small>자동으로 안 될 때</small>
+<small id="code-label">자동으로 안 될 때</small>
 <div class="row"><span>초대코드</span><span class="code" id="code"></span><button class="copy" id="copy" type="button">복사</button></div>
 <div class="hint">앱의 "초대코드로 참여"에 적어 주세요</div>
 </div>
 </main>
 <script>
 (function () {
+  // 비공개 테스트 동안만 true: 테스터 그룹 가입·테스트 참여 단계를 보여 준다.
+  // 공개 출시하면 false 로 바꾼다 (그러면 예전처럼 바로 Play 스토어로).
+  var TESTING = true;
+
   var pkg = 'com.dandul.dandul';
   var m = /[?&]c=([0-9A-Za-z]{6})(?:&|$)/.exec(location.search);
   var code = m ? m[1].toUpperCase() : null;
+  // 앱 열기를 해 봤는데 앱이 없어서 이 페이지로 돌아온 경우
+  var noapp = /[?&]noapp=1(?:&|$)/.test(location.search);
   var ua = navigator.userAgent || '';
   var android = /Android/i.test(ua);
   var ios = /iPhone|iPad|iPod/i.test(ua);
@@ -63,15 +92,17 @@ a{color:var(--deep)}
   // Play 스토어: 초대코드를 설치 정보(referrer)에 실어 보낸다 → 앱이 설치 후 처음 한 번 읽는다
   var store = 'https://play.google.com/store/apps/details?id=' + pkg +
     (code ? '&referrer=' + encodeURIComponent('invite=' + code) : '');
-  // 앱이 있으면 앱을, 없으면 위 Play 주소를 연다 (같은 초대 주소를 앱에 넘김)
-  var intent = 'intent://devwelchis-cpu.github.io/i/' + (code ? '?c=' + code : '') +
-    '#Intent;scheme=https;package=' + pkg +
-    ';S.browser_fallback_url=' + encodeURIComponent(store) + ';end';
+  // 앱이 있으면 앱을, 없으면 fallback 을 연다 (같은 초대 주소를 앱에 넘김)
+  function intent(fallback) {
+    return 'intent://devwelchis-cpu.github.io/i/' + (code ? '?c=' + code : '') +
+      '#Intent;scheme=https;package=' + pkg +
+      ';S.browser_fallback_url=' + encodeURIComponent(fallback) + ';end';
+  }
 
   var get = document.getElementById('get');
   var open = document.getElementById('open');
-  get.href = android ? intent : store;
-  open.href = android ? intent : store;
+  get.href = android ? intent(store) : store;
+  open.href = android ? intent(store) : store;
 
   if (code) {
     document.getElementById('code').textContent = code;
@@ -91,13 +122,23 @@ a{color:var(--deep)}
   }
 
   if (ios) {
+    // 아이폰 앱이 없으니 '앱에 적으면 연결돼요'라고 하지 않는다
     get.hidden = true;
     document.getElementById('open-line').hidden = true;
     document.getElementById('ios').hidden = false;
-    document.getElementById('lead').innerHTML = '아래 초대코드를 앱에 적으면<br>보낸 사람과 연결돼요';
-  } else if (android && code) {
-    // 메신저 안 브라우저처럼 앱 링크가 바로 안 열린 경우: 열리자마자 한 번 시도
-    location.href = intent;
+    document.getElementById('lead').innerHTML = '아이폰 앱은 아직<br>준비 중이에요';
+    document.getElementById('code-label').textContent = 'Android 휴대폰에서 직접 적을 때';
+    return;
+  }
+
+  if (TESTING) document.getElementById('steps').hidden = false;
+
+  if (android && code && !noapp) {
+    // 메신저 안 브라우저처럼 앱 링크가 바로 안 열린 경우: 열리자마자 한 번 시도.
+    // 테스트 동안에는 앱이 없을 때 Play 대신 이 페이지(단계 안내)로 돌아온다 —
+    // 테스터가 아니면 Play 에서 앱을 찾을 수 없다고 나오기 때문.
+    var back = location.origin + location.pathname + '?c=' + code + '&noapp=1';
+    location.href = intent(TESTING ? back : store);
   }
 })();
 </script>
